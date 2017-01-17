@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { FETCH_POSTS } from './types';
+import { FETCH_POSTS, CREATE_POSTS } from './types';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=allhailtheimponderablewhatever'
@@ -20,6 +20,16 @@ export function fetchPosts() {
 
   return {
     type: FETCH_POSTS,
+    payload: request
+  };
+}
+
+/* 'props' below is getting passed in by the form in ./components/posts-new.js */
+export function createPosts(props) {
+  const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, props);
+
+  return {
+    type: CREATE_POSTS,
     payload: request
   };
 }
