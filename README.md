@@ -21,5 +21,6 @@ A good overview of key React concepts can be found
 * Redux
 * Axios used alongside ReduxPromise
 * [ReduxForm](https://github.com/erikras/redux-form)
+* React Context
 
 This app follows the code from [this](https://www.udemy.com/react-redux/learn/v4/content) Udemy course by [Stephen Grider](https://github.com/stephengrider).
