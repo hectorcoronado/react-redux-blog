@@ -17,7 +17,7 @@ class PostsNew extends Component {
     declared that way in ./actions/index */
     this.props.createPosts(props)
       .then(() => {
-        /* After blog post has been created, navigate user to index. We navigate by calling
+        /* Only after blog post has been created, navigate user to index. We navigate by calling
         this.context.router.push with the new path to navigate to */
         this.context.router.push('/');
       });
