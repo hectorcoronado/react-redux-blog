@@ -10,6 +10,8 @@ class PostsIndex extends Component {
   rendered to the DOM for the FIRST TIME.
 
   It will NOT be called on subsequent renders.
+
+  So whenever the component is about to render, we need to go get our Posts from the server
   */
   componentWillMount() {
     this.props.fetchPosts();
@@ -20,8 +22,16 @@ class PostsIndex extends Component {
     return this.props.posts.map((post) => {
       return (
         <li className="list-group-item" key={post.id}>
-          <span className="pull-xs-right">{post.categories}</span>
-          <strong>{post.title}</strong>
+          {/* We've specified the following route in routes.js:
+
+          <Route path="posts/:id" component={PostsShow} />
+
+          So we need to create a <Link> that directs us to this route and creates the necessary URL:
+          */}
+          <Link to={"posts/" + post.id}>
+            <span className="pull-xs-right">{post.categories}</span>
+            <strong>{post.title}</strong>
+          </Link>
         </li>
       );
     });

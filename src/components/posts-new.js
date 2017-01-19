@@ -44,10 +44,11 @@ class PostsNew extends Component {
           {/* {...title} below destructures all the properties on the title object, so e.g. the onChange
           method that we get from reduxForm is available as title.onChange() */}
           <input type="text" className="form-control" {...title}/>
-          {/* title.error is added to the title key by the validate function */}
           <div className="text-help">
-            {/* reduxForm gives us title.touched as helper, it defaults to false until a user
-            interacts with the input field */}
+            {/* title.error is added to the title key by the validate function
+
+            reduxForm gives us title.touched as helper, it defaults to false until a user interacts
+            with the input field */}
             {title.touched ? title.error : ''}
           </div>
         </div>

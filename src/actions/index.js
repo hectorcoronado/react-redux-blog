@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-import { FETCH_POSTS, CREATE_POSTS } from './types';
+import {
+  FETCH_POST,
+  FETCH_POSTS,
+  CREATE_POSTS
+} from './types';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=allhailtheimponderablewhatever'
@@ -8,6 +12,8 @@ const API_KEY = '?key=allhailtheimponderablewhatever'
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
   /*
+  This ActionCreator fetches the posts from the above URL to display them in our PostsIndex component.
+
   Axios will return a PROMISE, and attach it to the payload key on the object below. The payload
   will, at that moment, be a promise, but our redux-promise middleware will stop the Action
   entirely until the AJAX/axios request finishes; it then dispatches a new Action with the SAME
@@ -30,6 +36,16 @@ export function createPosts(props) {
 
   return {
     type: CREATE_POSTS,
+    payload: request
+  };
+}
+
+// This gets called with the specific id of the post we're getting:
+export function fetchPost(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: FETCH_POST,
     payload: request
   };
 }
